@@ -14,6 +14,12 @@ public:
     glad_glViewport(0, 0, width, height);
   }
 
+  void processInput(GLFWwindow *window) {
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+      glfwSetWindowShouldClose(window, true);
+    }
+  }
+
   bool init() {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -42,6 +48,11 @@ public:
 
   void run() {
     while (!glfwWindowShouldClose(window)) {
+      processInput(window);
+
+      glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+      glClear(GL_COLOR_BUFFER_BIT);
+
       glfwSwapBuffers(window);
       glfwPollEvents();
     }
