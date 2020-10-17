@@ -106,7 +106,6 @@ public:
     window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "LearnOpenGL", nullptr, nullptr);
     if (window == nullptr) {
       std::cout << "Failed to create GLFW window" << std::endl;
-      glfwTerminate();
       return false;
     }
 
@@ -200,7 +199,8 @@ public:
 int main() {
   auto app = App();
 
-  app.init();
-  app.run();
+  if (app.init()) {
+    app.run();
+  }
   app.terminate();
 }
