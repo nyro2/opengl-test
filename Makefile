@@ -1,5 +1,5 @@
 CFLAGS=-std=c++17 -Wall --pedantic-errors
-LDFLAGS=-lglfw -lpthread -lX11 -ldl
+LDFLAGS=-lglfw3 -lpthread -lX11 -ldl
 
 main: main.cpp glad.o
 	clang++ $(CFLAGS) -o $@ main.cpp glad.o $(LDFLAGS)
